@@ -11,9 +11,9 @@ repos:
     hooks:
       - id: ruff
       - id: ruff-format
-  - repo: local
+  - repo: local # local hook to test Python code pre-commit
     hooks:
-      - id: black
+      - id: pytest
         name: pytest
         entry: pytest
         language: system
