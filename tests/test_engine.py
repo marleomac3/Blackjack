@@ -74,3 +74,27 @@ def test_blackjack():
 
     # Assert
     assert is_blackjack
+
+
+def test_can_split():
+    # Arrange
+    card1 = Card(Rank.EIGHT, Suit.SPADES)
+    card2 = Card(Rank.EIGHT, Suit.HEARTS)
+    hand = Hand()
+    hand.add_card(card1)
+    hand.add_card(card2)
+
+    # Act
+    can_split = hand.can_split()
+
+    # Assert
+    assert can_split
+
+
+# def test_split():
+#     # Arrange
+#     card1 = Card(Rank.EIGHT, Suit.SPADES)
+#     card2 = Card(Rank.EIGHT, Suit.HEARTS)
+#     hand = Hand()
+#     hand.add_card(card1)
+#     hand.add_card(card2)

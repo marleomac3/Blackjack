@@ -56,3 +56,6 @@ class Hand:
 
     def is_blackjack(self):
         return len(self.cards) == 2 and self.total() == 21
+
+    def can_split(self):
+        return len(self.cards) == 2 and self.cards[0].rank == self.cards[1].rank
