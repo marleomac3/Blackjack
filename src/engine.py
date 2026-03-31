@@ -27,6 +27,7 @@ class Suit(Enum):
 
 Card = namedtuple("Card", ["rank", "suit"])
 
+
 class Hand:
     def __init__(self):
         self.cards: list[Card] = []
@@ -49,3 +50,9 @@ class Hand:
             aces -= 1
 
         return value
+
+    def is_bust(self):
+        return self.total() > 21
+
+    def is_blackjack(self):
+        return len(self.cards) == 2 and self.total() == 21

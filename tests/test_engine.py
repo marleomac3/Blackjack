@@ -42,3 +42,35 @@ def test_hand_value_with_ace():
 
     # Assert
     assert hand_value == 16
+
+
+def test_bust():
+    # Arrange
+    card1 = Card(Rank.KING, Suit.SPADES)
+    card2 = Card(Rank.KING, Suit.DIAMONDS)
+    card3 = Card(Rank.KING, Suit.CLUBS)
+    hand = Hand()
+    hand.add_card(card1)
+    hand.add_card(card2)
+    hand.add_card(card3)
+
+    # Act
+    is_bust = hand.is_bust()
+
+    # Assert
+    assert is_bust
+
+
+def test_blackjack():
+    # Arrange
+    card1 = Card(Rank.ACE, Suit.SPADES)
+    card2 = Card(Rank.TEN, Suit.HEARTS)
+    hand = Hand()
+    hand.add_card(card1)
+    hand.add_card(card2)
+
+    # Act
+    is_blackjack = hand.is_blackjack()
+
+    # Assert
+    assert is_blackjack
