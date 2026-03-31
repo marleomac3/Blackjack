@@ -27,19 +27,25 @@ class Suit(Enum):
 
 Card = namedtuple("Card", ["rank", "suit"])
 
+class Hand:
+    def __init__(self):
+        self.cards: list[Card] = []
 
-def calculate_hand_value(hand):
+    def add_card(self, card: Card):
+        self.cards.append(card)
 
-    value = 0
-    aces = 0
+    def total(self):
 
-    for card in hand:
-        value += card.rank.value
-        if card.rank == Rank.ACE:
-            aces += 1
+        value = 0
+        aces = 0
 
-    while value > 21 and aces > 0:
-        value -= 10
-        aces -= 1
+        for card in self.cards:
+            value += card.rank.value
+            if card.rank == Rank.ACE:
+                aces += 1
 
-    return value
+        while value > 21 and aces > 0:
+            value -= 10
+            aces -= 1
+
+        return value

@@ -1,4 +1,4 @@
-from src.engine import Card, Rank, Suit, calculate_hand_value
+from src.engine import Card, Rank, Suit, Hand
 
 
 def test_card():
@@ -16,10 +16,12 @@ def test_hand_value():
     # Arrange
     card1 = Card(Rank.KING, Suit.SPADES)
     card2 = Card(Rank.KING, Suit.HEARTS)
-    hand = [card1, card2]
+    hand = Hand()
+    hand.add_card(card1)
+    hand.add_card(card2)
 
     # Act
-    hand_value = calculate_hand_value(hand)
+    hand_value = hand.total()
 
     # Assert
     assert hand_value == 20
@@ -30,10 +32,13 @@ def test_hand_value_with_ace():
     card1 = Card(Rank.KING, Suit.SPADES)
     card2 = Card(Rank.FIVE, Suit.HEARTS)
     card3 = Card(Rank.ACE, Suit.HEARTS)
-    hand = [card1, card2, card3]
+    hand = Hand()
+    hand.add_card(card1)
+    hand.add_card(card2)
+    hand.add_card(card3)
 
     # Act
-    hand_value = calculate_hand_value(hand)
+    hand_value = hand.total()
 
     # Assert
     assert hand_value == 16
